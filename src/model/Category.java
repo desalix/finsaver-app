@@ -6,7 +6,8 @@ public enum Category {
     SHOPPING("Shopping"),
     SAVINGS("Savings"),
     OTHER("Other"),
-    EXTRA_INCOME("Extra income");
+    EXTRA_INCOME("Extra income"),
+    MONTHLY_INCOME("Monthly income");
 
     private final String displayName;
 

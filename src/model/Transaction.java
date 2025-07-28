@@ -29,4 +29,9 @@ public abstract class Transaction {
     public String getDescription() {
         return description;
     }
+    
+    public double getSignedAmount() {
+        return this instanceof Expense ? -amount : amount;
+    }
+
 }

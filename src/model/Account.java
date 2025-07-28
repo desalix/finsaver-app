@@ -6,15 +6,15 @@ import java.time.LocalDate;
 
 public class Account {
     private double balance;
-    private List<Transaction> transactionHistory;
+    private List<Transaction> transactions;
 
     public Account() {
         this.balance = 100.0;
-        this.transactionHistory = new ArrayList<>();
+        this.transactions = new ArrayList<>();
     }
 
     public void addTransaction(Transaction t) {
-        transactionHistory.add(t);
+        transactions.add(t);
         balance += t.getAmount();
     }
 
@@ -22,16 +22,20 @@ public class Account {
         return balance;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
     public List<Transaction> getRecentTransactions(int limit) {
-        int fromIndex = Math.max(0, transactionHistory.size() - limit);
-        return transactionHistory.subList(fromIndex, transactionHistory.size());
+        int fromIndex = Math.max(0, transactions.size() - limit);
+        return transactions.subList(fromIndex, transactions.size());
     }
 
     public List<Transaction> getByDate(LocalDate date){
         List<Transaction> selectedTransactions = new ArrayList<>();
-        for (int i = 0; i < transactionHistory.size(); i++) {
-            if(transactionHistory.get(i).getDate() == date){
-                selectedTransactions.add(transactionHistory.get(i));
+        for (int i = 0; i < transactions.size(); i++) {
+            if(transactions.get(i).getDate() == date){
+                selectedTransactions.add(transactions.get(i));
             }
         }
         return selectedTransactions;
