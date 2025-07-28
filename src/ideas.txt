@@ -1,0 +1,5 @@
+1. Añadir cada transacción a una lista por categoría, así poder filtrar.
+
+2. El income mensual sea fijo y se añada automáticamente según un LocalDate (por ende añadir una opción para modificarlo y también la fecha en la que se añade).
+
+3. Dada la idea 1, es más sencillo añadir gráficos o colores etc, según el tipo de gasto. Hacer que Savings sea un gasto también (se elimina del Balance global y se añade a la cuenta de Savings).
