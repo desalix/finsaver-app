@@ -11,7 +11,7 @@ public class TransactionController {
         this.appState = appState;
     }
 
-    public Transaction addTransaction(String description, String amountText, String category) {
+    public Transaction addTransaction(String description, String amountText, Category category) {
         return appState.processTransaction(description, amountText, category);
     }
 

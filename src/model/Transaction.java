@@ -4,10 +4,10 @@ import java.time.LocalDate;
 public abstract class Transaction {
     protected double amount;
     protected LocalDate date;
-    protected String category;
+    protected Category category;
     protected String description;
 
-    public Transaction(double amount, LocalDate date, String description, String category) {
+    public Transaction(double amount, LocalDate date, Category category, String description) {
         this.amount = amount;
         this.date = date;
         this.category = category;
@@ -22,7 +22,7 @@ public abstract class Transaction {
         return date;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 

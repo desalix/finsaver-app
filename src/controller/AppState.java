@@ -7,18 +7,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AppState {
 
-    private static final String[] predefinedCategories = {
-        "Lifestyle", "Fixed expenses", "Shopping", "Savings", "Other", "Extra income"
-    };
-
     private final Account mainAccount = new Account();
-    private final Map<String, Account> categoryAccounts = new HashMap<>();
+    private final Map<Category, Account> categoryAccounts = new HashMap<>();
 
     public AppState() {
-        for (String category : predefinedCategories) {
+        for (Category category : Category.values()) {
             categoryAccounts.put(category, new Account());
         }
     }
@@ -27,15 +24,15 @@ public class AppState {
         return mainAccount;
     }
 
-    public Account getCategoryAccount(String category) {
+    public Account getCategoryAccount(Category category) {
         return categoryAccounts.get(category);
     }
 
     public List<String> getCategoryNames() {
-        return Arrays.asList(predefinedCategories);
+        return Arrays.stream(Category.values()).map(Category::getDisplayName).collect(Collectors.toList());
     }
 
-    public Transaction processTransaction(String description, String amountText, String category) {
+    public Transaction processTransaction(String description, String amountText, Category category) {
         if (description == null || description.isEmpty()) {
             throw new IllegalArgumentException("Description cannot be empty.");
         }
@@ -52,14 +49,15 @@ public class AppState {
         }
 
         Transaction transaction;
-        if (category.equals("Extra income")) {
-            transaction = new Income(amount, LocalDate.now(), description, category);
+        if (category.equals(Category.EXTRA_INCOME)) {
+            transaction = new Income(amount, LocalDate.now(), category, description);
         } else {
-            transaction = new Expense(amount, LocalDate.now(), description, category);
-        }
+            transaction = new Expense(amount, LocalDate.now(), category, description);
+        }   
 
         mainAccount.addTransaction(transaction);
         Account categoryAccount = categoryAccounts.get(category);
+
         if (categoryAccount != null) {
             categoryAccount.addTransaction(transaction);
         }
