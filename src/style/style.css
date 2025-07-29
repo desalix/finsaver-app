@@ -1,0 +1,25 @@
+/* === style/style.css === */
+
+.root {
+    -fx-background-color: #f9f9f9;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.label {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.label.title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.radio-button {
+    -fx-font-size: 14px;
+}
+
+.vbox {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+}
