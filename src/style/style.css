@@ -1,8 +1,6 @@
-/* === style/style.css === */
-
 .root {
     -fx-background-color: #f9f9f9;
-    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-family: "Inter 18pt Regular";
 }
 
 .label {
@@ -10,8 +8,14 @@
     -fx-font-size: 14px;
 }
 
-.label.title {
-    -fx-font-size: 18px;
+.title-view {
+    -fx-font-size: 20px;
+    -fx-font-family: "Inter 18pt SemiBold";
+    -fx-padding: 0 0 10 0;
+}
+
+.small-title {
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
 
@@ -19,7 +23,27 @@
     -fx-font-size: 14px;
 }
 
-.vbox {
+/* Contenido del MainView */
+.main-content-view{
+    -fx-background-color: white;
+}
+
+
+/* Botones de cambio de View */
+.selector-box {
+    -fx-padding: 0 0 0 20;
+
+}
+
+/* Texto de Selector en el SideBar */
+.selector-section{
     -fx-spacing: 10;
-    -fx-padding: 10;
+    -fx-padding: 15;
+}
+
+/* TODA la SideBar */
+.sidebar{
+    -fx-spacing: 10;
+    -fx-padding: 15;
+    -fx-background-color: rgb(225, 225, 225);
 }

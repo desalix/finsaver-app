@@ -8,9 +8,9 @@ public class HomeView extends VBox {
 
     public HomeView() {
         Label title = new Label("Home");
-        title.getStyleClass().addAll("label", "title");
-
+        title.getStyleClass().add("title-view");
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(title);
+
     }
 }

@@ -1,8 +1,10 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -15,7 +17,7 @@ public class MainView extends BorderPane {
     public MainView(Stage stage) {
         // ===== Side Bar =====
         Label selectorLabel = new Label("Selector");
-        selectorLabel.getStyleClass().addAll("label", "title");
+        selectorLabel.getStyleClass().addAll("title-view");
 
         RadioButton homeBtn = new RadioButton("Home");
         RadioButton transactionsBtn = new RadioButton("Transactions");
@@ -32,11 +34,16 @@ public class MainView extends BorderPane {
 
         homeBtn.setSelected(true); // Default view
 
-        VBox selectorBox = new VBox(10, selectorLabel, homeBtn, transactionsBtn, savingsBtn);
-        selectorBox.getStyleClass().add("vbox");
+        VBox selectorBox = new VBox(10, homeBtn, transactionsBtn, savingsBtn);
+        selectorBox.getStyleClass().add("selector-box");
 
-        sideBar = new VBox(selectorBox);
-        sideBar.getStyleClass().add("vbox");
+
+        VBox selectorSection = new VBox(25, selectorLabel);
+        selectorSection.getStyleClass().add("selector-section");
+        selectorSection.setAlignment(Pos.CENTER);
+
+        sideBar = new VBox(selectorSection, selectorBox);
+        sideBar.getStyleClass().add("sidebar");
         sideBar.setPrefWidth(200);
 
         // ===== Main Content =====
@@ -46,6 +53,7 @@ public class MainView extends BorderPane {
 
         VBox mainContentBox = new VBox(mainContent);
         mainContentBox.setPadding(new Insets(10));
+        mainContentBox.getStyleClass().add("main-content-view");
 
         // ===== Layout =====
         this.setLeft(sideBar);
@@ -79,6 +87,8 @@ public class MainView extends BorderPane {
     public Scene createScene() {
         Scene scene = new Scene(this, 900, 600);
         scene.getStylesheets().add(getClass().getResource("/style/style.css").toExternalForm());
+        Font.loadFont(getClass().getResourceAsStream("/resources/fonts/Inter_18pt-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/resources/fonts/Inter_18pt-Semibold.ttf"), 12);
         return scene;
     }
 }
